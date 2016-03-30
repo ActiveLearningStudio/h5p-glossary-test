@@ -1,0 +1,42 @@
+[
+  {
+    "name": "from",
+    "type": "text",
+    "label": "From Language",
+    "maxLength": 128,
+    "default": "English"
+  },
+  {
+    "name": "to",
+    "type": "text",
+    "label": "To Language",
+    "maxLength": 128,
+    "default": "German"
+  },
+  {
+    "name": "words",
+    "type": "list",
+    "label": "Words",
+    "entity": "word",
+    "min": 1,
+    "max": 128,
+    "field": {
+      "type": "group",
+      "label": "Word",
+      "fields": [
+        {
+          "name": "original",
+          "type": "text",
+          "label": "Original",
+          "maxLength": 128
+        },
+        {
+          "name": "translation",
+          "type": "text",
+          "label": "Translation",
+          "maxLength": 128
+        }
+      ]
+    }
+  }
+]
