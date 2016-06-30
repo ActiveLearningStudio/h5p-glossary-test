@@ -17,39 +17,28 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
   var Start = function (_React$Component) {
     _inherits(Start, _React$Component);
 
-    /**
-     * constructor
-     * @param {object} props
-     */
-
-    function Start(props) {
+    function Start() {
       _classCallCheck(this, Start);
 
-      return _possibleConstructorReturn(this, Object.getPrototypeOf(Start).call(this, props));
-
-      /**
-       * @type {object}
-       * @property {string} inputArtist search artist
-       */
-      /*this.state = {
-          inputArtist: 'radiohead'
-      };*/
+      return _possibleConstructorReturn(this, Object.getPrototypeOf(Start).apply(this, arguments));
     }
-
-    /**
-     * handle start event
-     * @param {SytheticEvent} e
-     */
-
 
     _createClass(Start, [{
       key: "handleStart",
-      value: function handleStart(e) {
+
+
+      /**
+       * Handle Glossary Test Start Event
+       *
+       * Triggered when the Start button is pressed
+       */
+      value: function handleStart() {
         this.props.onStart();
       }
 
       /**
-       * render
+       * Render
+       *
        * @return {ReactElement} markup
        */
 
@@ -67,7 +56,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
             React.createElement(
               "dt",
               null,
-              "Translate from"
+              this.props.l10n.translateFrom
             ),
             React.createElement(
               "dd",
@@ -77,7 +66,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
             React.createElement(
               "dt",
               null,
-              "Translate to"
+              this.props.l10n.translateTo
             ),
             React.createElement(
               "dd",
@@ -90,7 +79,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
             { onPress: function onPress() {
                 return _this2.handleStart();
               } },
-            "Start"
+            this.props.l10n.start
           )
         );
       }

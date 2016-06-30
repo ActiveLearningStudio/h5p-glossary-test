@@ -10,12 +10,12 @@
       this.setState({stage: GlossaryTest.STAGE_PAGE});
     },
 
-    handleFinish() {
-      this.setState({stage: GlossaryTest.STAGE_SUMMARY});
+    handleFinish(scores) {
+      this.setState({stage: GlossaryTest.STAGE_SUMMARY, scores: scores});
     },
 
     handleReset() {
-      this.setState({stage: GlossaryTest.STAGE_START});
+      this.setState({stage: GlossaryTest.STAGE_START, scores: []});
     },
 
     render() {
@@ -24,19 +24,19 @@
         default:
         case GlossaryTest.STAGE_START:
           stage = (
-            <GlossaryTest.Start from={this.props.from} to={this.props.to} onStart={this.handleStart} />
+            <GlossaryTest.Start from={this.props.from} to={this.props.to} l10n={this.props.l10n} onStart={this.handleStart} />
           );
           break;
 
         case GlossaryTest.STAGE_PAGE:
           stage = (
-            <GlossaryTest.Page words={this.props.words} onFinish={this.handleFinish} />
+            <GlossaryTest.Page words={this.props.words} numPerList={2} l10n={this.props.l10n} onFinish={this.handleFinish} />
           );
           break;
 
         case GlossaryTest.STAGE_SUMMARY:
           stage = (
-            <GlossaryTest.Summary onReset={this.handleReset} />
+            <GlossaryTest.Summary scores={this.state.scores} l10n={this.props.l10n} onReset={this.handleReset} />
           );
           break;
       }
@@ -49,22 +49,4 @@
     }
   });
 
-
-
-  GlossaryTest.Button = React.createClass({
-    handleKeyPress(event) {
-      if (event.charCode === 32) {
-        this.props.onPress();
-        event.preventDefault();
-      }
-    },
-
-    render() {
-      return (
-        <div className="h5p-glossary-test-button" role="button" tabIndex="0" onKeyPress={this.handleKeyPress} onClick={this.props.onPress}>
-          {this.props.children}
-        </div>
-      );
-    }
-  });
 })(H5P.GlossaryTest, H5P.React);

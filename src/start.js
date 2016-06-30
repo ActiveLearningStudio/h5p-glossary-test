@@ -6,43 +6,29 @@
   class Start extends React.Component {
 
     /**
-     * constructor
-     * @param {object} props
+     * Handle Glossary Test Start Event
+     *
+     * Triggered when the Start button is pressed
      */
-    constructor(props) {
-      super(props);
-
-      /**
-       * @type {object}
-       * @property {string} inputArtist search artist
-       */
-      /*this.state = {
-          inputArtist: 'radiohead'
-      };*/
-    }
-
-    /**
-     * handle start event
-     * @param {SytheticEvent} e
-     */
-    handleStart(e) {
+    handleStart() {
       this.props.onStart();
     }
 
     /**
-     * render
+     * Render
+     *
      * @return {ReactElement} markup
      */
     render() {
       return (
         <div>
           <dl>
-            <dt>Translate from</dt>
+            <dt>{this.props.l10n.translateFrom}</dt>
             <dd>{this.props.from}</dd>
-            <dt>Translate to</dt>
+            <dt>{this.props.l10n.translateTo}</dt>
             <dd>{this.props.to}</dd>
           </dl>
-          <GlossaryTest.Button onPress={() => this.handleStart()}>Start</GlossaryTest.Button>
+          <GlossaryTest.Button onPress={() => this.handleStart()}>{this.props.l10n.start}</GlossaryTest.Button>
         </div>
       );
     }
